@@ -1,0 +1,36 @@
+<div class="center-container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    
+    <form class="example-form" [formGroup]="loginFormDetails" (ngSubmit)="directLogin(loginFormDetails.value)">
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="Username" #username maxlength="30" formControlName="name"
+           required>
+    <mat-hint align="end">{{username.value.length}}/30</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password"  formControlName="password" [type]="hidePassword ? 'password' : 'text'" required>
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>  (click)="googleLogin()"-->
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button type="submit" color="primary" [disabled]="loginFormDetails.invalid">Login</button>
+    </mat-card-actions>
+  </form>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+        <button (click)="googleLogin()" class="btn btn-lg btn-google btn-block text-uppercase btn-outline"  style=" display: flex; flex-direction: row; justify-content: center; align-items: center; width: 100%;">
+            <img mat-card-image src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" width="7%" height="30px"> <span style="font-weight: bold;">Sign in Google</span>
+        </button>     
+    </mat-card-actions>
+  </mat-card>
+</div>
